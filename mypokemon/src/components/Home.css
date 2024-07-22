@@ -1,0 +1,13 @@
+.home-container {
+    text-align: center;
+    padding: 20px;
+  }
+  
+  .search-input {
+    margin: 20px 0;
+  }
+  
+  .pokemon-card {
+    text-align: center;
+    margin-top: 20px;
+  }
