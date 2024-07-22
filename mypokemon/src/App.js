@@ -1,25 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import NavBar from "./components/Navbar";
+import Home from "./components/Home";
+import PokemonDetails from "./components/PokemonDetails";
+import YourPokemon from "./components/YourPokemon";
+import PokemonProvider from "./context/PokemonContext";
+import "./components/App.css";
+import { Container } from "@mui/material";
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <PokemonProvider>
+      <Router>
+        <NavBar />
+        <Container style={{ marginTop: "20px" }}>
+          <Routes>
+            <Route path="/" exact Component={Home} />
+            <Route path="/your-pokemon" Component={YourPokemon} />
+            <Route path="/pokemon/:name" Component={PokemonDetails} />
+          </Routes>
+        </Container>
+      </Router>
+    </PokemonProvider>
   );
-}
+};
 
 export default App;
